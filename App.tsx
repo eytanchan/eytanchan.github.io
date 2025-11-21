@@ -159,7 +159,7 @@ const GalleryView: React.FC<{ language: Language }> = ({ language }) => {
           {language === 'en' ? 'Gallery' : '画廊'}
         </h3>
         <p className="text-brand-secondary dark:text-gray-400 text-sm mt-2">
-          {language === 'en' ? 'A collection of moments captured in time.' : '捕捉时间中的瞬间集合。'}
+          {language === 'en' ? 'A collection of moments captured in time.' : '捕捉瞬间。'}
         </p>
       </div>
 
@@ -195,21 +195,21 @@ const AboutView: React.FC<{ language: Language }> = ({ language }) => {
           {language === 'en' ? 'Eytan Chan' : 'Eytan Chan'}
         </h1>
         <p className="text-lg text-brand-secondary dark:text-gray-400 italic">
-          {language === 'en' ? 'Researcher / Developer / Photographer' : '研究员 / 开发者 / 摄影师'}
+          {language === 'en' ? 'Developer / Photographer' : '开发 / 摄影'}
         </p>
       </div>
 
       <div className="prose prose-lg dark:prose-invert text-brand-secondary dark:text-gray-300 leading-loose">
         <p className="mb-8 first-letter:text-5xl first-letter:font-bold first-letter:text-brand-primary first-letter:mr-3 first-letter:float-left">
           {language === 'en'
-            ? "I am a researcher and developer focused on the intersection of cryptography, finance, and minimalist design. This blog serves as a repository for my thoughts on stablecoin economics and a gallery for my analog photography."
-            : "我是一名研究员和开发者，专注于密码学、金融和极简设计的交叉领域。这个博客用来存放我对稳定币经济学的思考，以及我的胶片摄影作品展示。"
+            ? "A vibe-coder trying to build some useful tools, all the posts writen by human, to record the Alpha Moment along the seeking and practice journey."
+            : "正在尝试构建一些有用工具的 vibe-coder，所有文字内容人工编写，记录一些 Alpha Moment。"
           }
         </p>
         <p className="mb-8">
           {language === 'en'
-            ? "My philosophy is simple: clearer signal, less noise. The aesthetic of this site reflects that principle. I believe in building software that feels organic and tools that empower user sovereignty."
-            : "我的哲学很简单：更清晰的信号，更少的噪音。这个网站的美学反映了这一原则。我相信构建感觉有机的软件和赋予用户主权的工具。"
+            ? "Some social links are as belows, welcome to contact me."
+            : "一些联系信息如下，欢迎。"
           }
         </p>
 
@@ -218,17 +218,17 @@ const AboutView: React.FC<{ language: Language }> = ({ language }) => {
             {language === 'en' ? 'Connect' : '保持联系'}
           </h4>
           <div className="flex flex-wrap gap-6 text-sm">
-            <a href="#" className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-brand-secondary dark:text-gray-300 hover:bg-brand-accent hover:text-brand-primary transition-all">
+            <a href="mailto:hi@etanchan.com" className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-brand-secondary dark:text-gray-300 hover:bg-brand-accent hover:text-brand-primary transition-all">
               <Mail size={16} />
-              <span>hello@eytanchan.com</span>
+              <span>hi@etanchan.com</span>
             </a>
-            <a href="#" className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-brand-secondary dark:text-gray-300 hover:bg-brand-accent hover:text-brand-primary transition-all">
+            <a href="https://x.com/0xetan" className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-brand-secondary dark:text-gray-300 hover:bg-brand-accent hover:text-brand-primary transition-all">
               <Twitter size={16} />
-              <span>@eytan_chan</span>
+              <span>@0xetan</span>
             </a>
-            <a href="#" className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-brand-secondary dark:text-gray-300 hover:bg-brand-accent hover:text-brand-primary transition-all">
+            <a href="https://github.com/eytnchn-cyber" className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-brand-secondary dark:text-gray-300 hover:bg-brand-accent hover:text-brand-primary transition-all">
               <Github size={16} />
-              <span>github.com/eytan</span>
+              <span>github.com/eytnchn-cyber</span>
             </a>
           </div>
         </div>
@@ -242,7 +242,7 @@ const Footer: React.FC<{ language: Language }> = ({ language }) => {
   return (
     <footer className={`w-full py-12 mt-auto bg-gray-50 dark:bg-[#151515] transition-colors ${fontClass}`}>
       <div className="max-w-5xl mx-auto px-6 text-center">
-        <div className="text-brand-primary font-bold text-lg mb-2">Eytan Chan</div>
+        <div className="text-brand-primary font-bold text-md mb-2">Whatever happens, happens.</div>
         <div className="text-xs text-brand-secondary/60 dark:text-gray-600 uppercase tracking-widest">
           &copy; 2020–2025 Eytan Chan
         </div>

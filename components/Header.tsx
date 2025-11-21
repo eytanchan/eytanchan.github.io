@@ -17,7 +17,7 @@ export const Header: React.FC<HeaderProps> = ({ language, setLanguage, darkMode,
 
   const navItems = [
     { path: '/', labelEn: 'Post', labelCn: '文章' },
-    { path: '/gallery', labelEn: 'Gallery', labelCn: '摄影' },
+    { path: '/gallery', labelEn: 'Gallery', labelCn: '相册' },
     { path: '/about', labelEn: 'About', labelCn: '关于' },
   ];
 
@@ -34,13 +34,13 @@ export const Header: React.FC<HeaderProps> = ({ language, setLanguage, darkMode,
   return (
     <header className={`w-full max-w-5xl mx-auto pt-10 pb-6 px-6 md:px-8 mb-8 ${fontClass}`}>
       <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
-        
+
         {/* Left: Avatar (Rounded Rectangle) */}
         <Link to="/" className="group relative">
           <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden shadow-sm border-2 border-transparent group-hover:border-brand-accent transition-all duration-300">
-            <img 
-              src="https://picsum.photos/200/200?grayscale" 
-              alt="Avatar" 
+            <img
+              src="https://raw.githubusercontent.com/eytanchan/eytan-images/master/avatar.jpg"
+              alt="Avatar"
               className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
             />
           </div>
@@ -48,18 +48,17 @@ export const Header: React.FC<HeaderProps> = ({ language, setLanguage, darkMode,
 
         {/* Right: Nav & Controls */}
         <div className="flex flex-col items-center md:items-end gap-4">
-          
+
           {/* Navigation Links */}
           <nav className="flex items-center gap-x-6 md:gap-x-8 text-lg">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`${
-                  isActive(item.path) 
-                    ? 'text-brand-primary font-bold' 
-                    : 'text-brand-secondary dark:text-gray-400 hover:text-brand-primary dark:hover:text-brand-accent'
-                } transition-colors tracking-wide`}
+                className={`${isActive(item.path)
+                  ? 'text-brand-primary font-bold'
+                  : 'text-brand-secondary dark:text-gray-400 hover:text-brand-primary dark:hover:text-brand-accent'
+                  } transition-colors tracking-wide`}
               >
                 {language === 'en' ? item.labelEn : item.labelCn}
               </Link>
@@ -68,7 +67,7 @@ export const Header: React.FC<HeaderProps> = ({ language, setLanguage, darkMode,
 
           {/* Controls (Lang | Theme) */}
           <div className="flex items-center gap-4 text-sm text-brand-secondary dark:text-gray-500">
-            
+
             <button
               onClick={toggleLanguage}
               className="flex items-center gap-2 hover:text-brand-primary dark:hover:text-brand-accent transition-colors"
