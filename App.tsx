@@ -7,6 +7,12 @@ import { MOCK_PHOTOS } from './constants';
 import postsData from './src/posts.json';
 import { Language, Post } from './types';
 import { ArrowRight, Mail, Github, Twitter } from 'lucide-react';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import rehypeRaw from 'rehype-raw';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 // --- VIEW COMPONENTS ---
 
@@ -95,7 +101,50 @@ const PostDetailView: React.FC<{ language: Language }> = ({ language }) => {
       </div>
 
       <div className="prose dark:prose-invert text-brand-secondary dark:text-gray-300 leading-loose max-w-none">
-        <ReactMarkdown>{content.content}</ReactMarkdown>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm, remarkMath]}
+          rehypePlugins={[rehypeRaw, rehypeKatex]}
+          components={{
+            a: ({ node, ...props }) => (
+              <a
+                {...props}
+                className="font-bold text-brand-secondary dark:text-gray-300 no-underline border-b-2 border-dashed border-brand-primary hover:text-brand-primary transition-colors"
+              />
+            ),
+            ul: ({ node, ...props }) => (
+              <ul {...props} className="list-disc pl-6 marker:text-brand-primary" />
+            ),
+            ol: ({ node, ...props }) => (
+              <ol {...props} className="list-decimal pl-6 marker:text-brand-primary" />
+            ),
+            li: ({ node, ...props }) => (
+              <li {...props} className="pl-2 mb-2" />
+            ),
+            code({ node, inline, className, children, ...props }: any) {
+              const match = /language-(\w+)/.exec(className || '');
+              return !inline && match ? (
+                <SyntaxHighlighter
+                  {...props}
+                  style={oneLight}
+                  language={match[1]}
+                  PreTag="div"
+                  customStyle={{ background: '#f5f5f5', borderRadius: '0.5rem', padding: '1rem' }}
+                >
+                  {String(children).replace(/\n$/, '')}
+                </SyntaxHighlighter>
+              ) : (
+                <code {...props} className={`${className} bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm font-mono text-brand-primary`}>
+                  {children}
+                </code>
+              );
+            },
+            del: ({ node, ...props }) => (
+              <del {...props} className="line-through decoration-brand-secondary/50" />
+            )
+          }}
+        >
+          {content.content}
+        </ReactMarkdown>
       </div>
     </article>
   );
