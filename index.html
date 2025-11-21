@@ -24,7 +24,8 @@
             },
             fontFamily: {
               averia: ['"Averia Serif Libre"', 'serif'],
-              mashan: ['"Ma Shan Zheng"', 'cursive'],
+              // Priority: Averia (for En/Nums) -> Ma Shan Zheng (for Chinese) -> Cursive fallback
+              mashan: ['"Averia Serif Libre"', '"Ma Shan Zheng"', 'cursive'],
             },
             animation: {
               'fade-in': 'fadeIn 0.5s ease-out',
