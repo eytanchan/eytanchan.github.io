@@ -12,34 +12,55 @@ import { ArrowRight, Mail, Github, Twitter } from 'lucide-react';
 
 const PostListView: React.FC<{ language: Language }> = ({ language }) => {
   const fontClass = language === 'en' ? 'font-averia' : 'font-mashan';
+  const [showAll, setShowAll] = useState(false);
+
   // Filter posts that have content in the selected language
-  const posts = (postsData as Post[]).filter(post => language === 'en' ? post.en : post.zh);
+  const allPosts = (postsData as Post[]).filter(post => language === 'en' ? post.en : post.zh);
+
+  // Determine which posts to show
+  const posts = showAll ? allPosts : allPosts.slice(0, 4);
 
   return (
     <main className={`w-full max-w-5xl mx-auto px-6 md:px-8 animate-fade-in ${fontClass}`}>
-      <div className="flex flex-col border-t border-brand-accent/20 dark:border-brand-accent/10 pt-12">
+      <div className="mt-12 mb-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-brand-primary dark:text-brand-primary">
+          {showAll
+            ? (language === 'en' ? 'All Posts' : '所有文章')
+            : (language === 'en' ? 'Latest Posts' : '最新文章')
+          }
+        </h2>
+      </div>
+
+      <div className="flex flex-col border-t border-brand-accent/20 dark:border-brand-accent/10 pt-8">
         {posts.map((post) => (
           <PostCard key={post.id} post={post} language={language} />
         ))}
       </div>
 
-      <div className="mt-4 mb-24 text-center">
-        <button
-          className="
-            relative overflow-hidden
-            px-10 py-3 rounded-full
-            border border-brand-primary text-brand-primary
-            dark:border-brand-accent dark:text-brand-accent
-            font-bold uppercase tracking-widest text-sm
-            hover:text-white dark:hover:text-gray-900
-            transition-all duration-300 ease-in-out
-            group
-          "
-        >
-          <span className="relative z-10">{language === 'en' ? 'View all posts' : '查看全部文章'}</span>
-          <div className="absolute inset-0 h-full w-full bg-brand-primary dark:bg-brand-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left z-0"></div>
-        </button>
-      </div>
+      {!showAll && (
+        <div className="mt-4 mb-24 text-center">
+          <button
+            onClick={() => setShowAll(true)}
+            className="
+              relative overflow-hidden
+              px-10 py-3 rounded-full
+              border border-brand-primary text-brand-primary
+              dark:border-brand-accent dark:text-brand-accent
+              font-bold uppercase tracking-widest text-sm
+              hover:text-white dark:hover:text-gray-900
+              transition-all duration-300 ease-in-out
+              group
+            "
+          >
+            <span className="relative z-10">{language === 'en' ? 'All Posts' : '所有文章'}</span>
+            <div className="absolute inset-0 h-full w-full bg-brand-primary dark:bg-brand-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left z-0"></div>
+          </button>
+        </div>
+      )}
+
+      {showAll && (
+        <div className="mb-24"></div>
+      )}
     </main>
   );
 };
