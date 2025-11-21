@@ -10,14 +10,14 @@ const RESOURCE_DIR = path.join(__dirname, '../resource');
 const OUTPUT_DIR = path.join(__dirname, '../src');
 const OUTPUT_FILE = path.join(OUTPUT_DIR, 'posts.json');
 
-const EXCERPT_SEPARATOR = '<!----read more---->';
+const EXCERPT_SEPARATOR = '<!-- more -->';
 
 function getPostData(filePath) {
     if (!fs.existsSync(filePath)) return null;
-    
+
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { data, content } = matter(fileContent);
-    
+
     const [excerpt, ...rest] = content.split(EXCERPT_SEPARATOR);
     const fullContent = content.replace(EXCERPT_SEPARATOR, '');
 
@@ -32,15 +32,19 @@ function generatePosts() {
     const enDir = path.join(RESOURCE_DIR, 'en');
     const zhDir = path.join(RESOURCE_DIR, 'zh');
 
-    if (!fs.existsSync(enDir)) {
-        console.error(`Directory not found: ${enDir}`);
+    if (!fs.existsSync(enDir) && !fs.existsSync(zhDir)) {
+        console.error(`Directories not found: ${enDir} or ${zhDir}`);
         return;
     }
 
-    const files = fs.readdirSync(enDir).filter(file => file.endsWith('.md'));
+    const enFiles = fs.existsSync(enDir) ? fs.readdirSync(enDir).filter(file => file.endsWith('.md')) : [];
+    const zhFiles = fs.existsSync(zhDir) ? fs.readdirSync(zhDir).filter(file => file.endsWith('.md')) : [];
+
+    // Create a unique set of filenames from both directories
+    const allFiles = new Set([...enFiles, ...zhFiles]);
     const posts = [];
 
-    files.forEach(file => {
+    allFiles.forEach(file => {
         const id = path.basename(file, '.md');
         const enPath = path.join(enDir, file);
         const zhPath = path.join(zhDir, file);
@@ -48,17 +52,20 @@ function generatePosts() {
         const enData = getPostData(enPath);
         const zhData = getPostData(zhPath);
 
-        if (!enData) return; // Should not happen as we iterate enDir
+        if (!enData && !zhData) return;
+
+        // Use date from English version, fallback to Chinese version
+        const dateStr = (enData && enData.meta.date) || (zhData && zhData.meta.date);
 
         const post = {
             id,
-            date: enData.meta.date ? new Date(enData.meta.date).toISOString().split('T')[0] : '',
+            date: dateStr ? new Date(dateStr).toISOString().split('T')[0] : '',
             hasZh: !!zhData,
-            en: {
+            en: enData ? {
                 title: enData.meta.title || 'Untitled',
                 excerpt: enData.excerpt,
                 content: enData.content
-            },
+            } : null,
             zh: zhData ? {
                 title: zhData.meta.title || '无标题',
                 excerpt: zhData.excerpt,

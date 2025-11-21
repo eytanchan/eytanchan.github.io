@@ -12,7 +12,8 @@ import { ArrowRight, Mail, Github, Twitter } from 'lucide-react';
 
 const PostListView: React.FC<{ language: Language }> = ({ language }) => {
   const fontClass = language === 'en' ? 'font-averia' : 'font-mashan';
-  const posts = postsData as Post[];
+  // Filter posts that have content in the selected language
+  const posts = (postsData as Post[]).filter(post => language === 'en' ? post.en : post.zh);
 
   return (
     <main className={`w-full max-w-5xl mx-auto px-6 md:px-8 animate-fade-in ${fontClass}`}>
@@ -50,11 +51,16 @@ const PostDetailView: React.FC<{ language: Language }> = ({ language }) => {
   const fontClass = language === 'en' ? 'font-averia' : 'font-mashan';
 
   if (!post) {
-    return <div className="text-center mt-20 text-brand-secondary">Post not found</div>;
+    return <div className={`text-center mt-20 text-brand-secondary ${fontClass}`}>Post not found</div>;
   }
 
-  // Fallback to English if Chinese is requested but not available
-  const content = language === 'cn' && post.zh ? post.zh : post.en;
+  const content = language === 'en' ? post.en : post.zh;
+
+  if (!content) {
+    return <div className={`text-center mt-20 text-brand-secondary ${fontClass}`}>
+      {language === 'en' ? 'Post not available in English' : '该文章暂无中文版本'}
+    </div>;
+  }
 
   return (
     <article className={`w-full max-w-3xl mx-auto px-6 md:px-8 animate-fade-in ${fontClass} mb-24`}>

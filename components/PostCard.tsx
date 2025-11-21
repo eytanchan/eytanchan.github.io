@@ -10,8 +10,9 @@ interface PostCardProps {
 export const PostCard: React.FC<PostCardProps> = ({ post, language }) => {
   const fontClass = language === 'en' ? 'font-averia' : 'font-mashan';
 
-  // Fallback to English if Chinese is requested but not available
-  const content = language === 'cn' && post.zh ? post.zh : post.en;
+  const content = language === 'en' ? post.en : post.zh;
+
+  if (!content) return null;
 
   return (
     <article className={`mb-16 group ${fontClass}`}>

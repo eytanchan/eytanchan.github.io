@@ -11,7 +11,7 @@
     "zh": {
       "title": "Hello World-CH",
       "excerpt": "This is a sample post.",
-      "content": "This is a sample post.\r\n\r\n   \r\n\r\n欢迎来到我的第一个博客！在这个帖子中，我将分享一些初步的想法，并设置这个空间。敬请期待更多！"
+      "content": "This is a sample post.\r\n\r\n \r\n\r\n欢迎来到我的第一个博客！在这个帖子中，我将分享一些初步的想法，并设置这个空间。敬请期待更多！"
     }
   },
   {
@@ -26,7 +26,51 @@
     "zh": {
       "title": "测试列表",
       "excerpt": "测试列表，就是测试 posts 列表。",
-      "content": "测试列表，就是测试 posts 列表。\r\n\r\n   \r\n\r\nWelcome to my first blog post! In this entry, I'll be sharing some initial thoughts and getting this space set up. Stay tuned for more!"
+      "content": "测试列表，就是测试 posts 列表。\r\n\r\n    \r\n\r\nWelcome to my first blog post! In this entry, I'll be sharing some initial thoughts and getting this space set up. Stay tuned for more!"
+    }
+  },
+  {
+    "id": "note2",
+    "date": "2025-02-20",
+    "hasZh": true,
+    "en": null,
+    "zh": {
+      "title": "使用Git同步Obsidian笔记",
+      "excerpt": "自22年开始，我一直使用Obsidian作为自己的笔记软件，无论是对Markdown语法的支持、社区插件生态，还是最开始吸引我的易用和免费，都让这款软件成为了伴随我最久，让我记录最多内容和想法的软件。",
+      "content": "自22年开始，我一直使用Obsidian作为自己的笔记软件，无论是对Markdown语法的支持、社区插件生态，还是最开始吸引我的易用和免费，都让这款软件成为了伴随我最久，让我记录最多内容和想法的软件。\r\n\r\n\r\n不过，除开保管库的目录日益庞杂以及标签体系的混乱，Obsidian有一个一直让我头疼的问题，那就是多端同步的解决方案。固然，Obsidian有官方提供的同步服务，不过，和对使用Notion同步笔记的顾虑一样，我比较担心数据的所有权不在自己手中。\r\n\r\n我此前一直在检索云服务提供商如iCloud、Google Drive 或者Dropbox提供云存储来托管我的笔记保管库。但是我发现都存在不同系统间的同步问题。移动端是无法便捷地通过Obsidian的手机软件读取放在云端的存储库的。并且，使用云服务也就意味着是明文保存笔记仓库，这会增加我对隐私的一点小担心😥。于是即使在23年我就想要解决多端同步的问题，但一直苦于该方案实行的不方便程度而不了了之。\r\n\r\nGit是我开始写博客后才接触到的版本控制和远程同步的解决方案。或许是因为思维固化，~~或许是因为懒，~~ 觉得这只是一个后端的同步工具，在最开始前，我并没有将其作为一种解决方案。在今天早晨，我再次检索同步方案时，发现了官方指南中对Git有分节的内容，中文和英文的检索结果显示，这是可行的解决方案并且稳定。建立个人的私有仓库也能够保证数据由自己掌控。\r\n\r\n实施的方法是简单的，参考教程[The Easiest Way to Setup Obsidian Git (to backup notes)](https://forum.obsidian.md/t/the-easiest-way-to-setup-obsidian-git-to-backup-notes)即可\r\n\r\n\r\n关于Git的安装使用的准备工作，可以回到[插件开发者的说明文档](https://publish.obsidian.md/git-doc/Start+here)中进行查找\r\n\r\n关于以上教程的🍪食用注意事项和插件版本的更新，有几项是需要了解的：\r\n1. 对于使用HTTPS进行同步的，需要使用`https://<Github_Token>@github.com/<user_name>/<repo_name>.git`的格式，直接复制仓库建议的地址可能需要重复验证\r\n2. 如果是空仓库，会有`origin/main`的无法同步的提示，需要在需要同步的目录下进入终端，运行如下指令：\r\n\t```\r\n\tgit branch --unset-upstream\r\n\tgit push --set-upstream origin main\r\n\t```\r\n3. 提交同步时，教程中的`Backup`选项[在官方文档的中已经停用](https://publish.obsidian.md/git-doc/Start+here#Backup+-+no+longer+in+use)，直接使用`<Commit-and-Sync>`或相似指令选项即可\r\n\r\n**完成以上教程的步骤后可以顺利实现不同的桌面端间对仓库的拉取和提交，那么移动端呢？**\r\n\r\n由于Github的支持对Markdown的预渲染，而我并没有移动端编辑笔记的习惯和需求，在移动端最大的需求是阅读和回顾，所以只需要下载软件登入账户即可，同时无存储负担，所以目前这是一套对我而言基本满分💯的解决方案。"
+    }
+  },
+  {
+    "id": "note1",
+    "date": "2024-10-23",
+    "hasZh": true,
+    "en": null,
+    "zh": {
+      "title": "博客站点的改动记录",
+      "excerpt": "在此处，记录本站点的变动，或大或小，会不小心迟到，也会一直优化升级🌟",
+      "content": "在此处，记录本站点的变动，或大或小，会不小心迟到，也会一直优化升级🌟\n\n\n~~使用git连接部署时请不要使用代理的TUN模式~~😜\n\n- 2024-10-23 增加了\"最近在看\"页面\n> ✨  \n> 调用了Hexo的Bangumi gallery插件生成页面，自定义页面名称，如\"anime\"，在首页新增菜单选项“最近在看”并实现跳转。示例如下：\n\n``` YAML\nbangumi_gallery:      # 插件自定义\npath: /anime.html     # 番剧墙页面的路径\n\nmenu:                          # 首页菜单选项设置\n最近在看: /anime || fa fa-film  # 目录内链接，'/anime'之后不需要加'/'，图标设置为'fa-film', 即Font Awesome icon\n\n```"
+    }
+  },
+  {
+    "id": "journal2",
+    "date": "2024-10-09",
+    "hasZh": true,
+    "en": null,
+    "zh": {
+      "title": "最近，听点后摇",
+      "excerpt": "给生活来点音乐吧。",
+      "content": "给生活来点音乐吧。\n\n\n后摇是我的音乐品味在当下的小站台。没办法听着音乐做事情的我，沉浸在音乐中的时间少得可怜。总得来说，经历的路线如下：\n- 跟风听华语流行乐，“爆款神曲”\n- 国产动漫和电视剧主题曲\n- 欧美剧配乐，欧美流行乐\n- 日本番剧OP&ED，国语民谣\n- 欧美乡村音乐，独立音乐\n- 吉他solo\n- 后摇\n\n<iframe style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/playlist/4ebKOuGNfJ5g8RdtbEBHxe?utm_source=generator\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe>\n\n在与音乐的共鸣中，我离人声越来越远，逐渐爱上了乐器独奏或协奏带来的旋律，后摇就像抓手，可以拉着我迷糊的思绪，用声音把我带到外星球，带给我一种很强烈的脱离感，拉开和生活、和人类的距离，好好喘口气╰(￣ω￣ｏ)"
+    }
+  },
+  {
+    "id": "journal1",
+    "date": "2024-10-08",
+    "hasZh": true,
+    "en": null,
+    "zh": {
+      "title": "新的生活",
+      "excerpt": "在本科毕业的时候，友人W对我说：“怎么样，都是生活。”这句带着平静和锋利的话，直击我的内心——原来中文可以有这种表达，把从容和胆量说得这般漫不经心。",
+      "content": "在本科毕业的时候，友人W对我说：“怎么样，都是生活。”这句带着平静和锋利的话，直击我的内心——原来中文可以有这种表达，把从容和胆量说得这般漫不经心。 \n \n\n当我带着莽撞和无知，闯入这个世界，淌过一路跌跌撞撞而不断被迫接受这个社会真实的样子，这句话，或许也可以用来映照我毕业1年多来颠沛波折的经历，也可以是最近开始的新的生活。\n\n新的生活是以重新开始记录开始的。\n![Obsidian库](https://raw.githubusercontent.com/eytanchan/eytan-images/master/j2.png)\n\n自从几年前有意识地开始记录之后，我在各类平台和工具之间来回横跳，知乎、豆瓣、Instagram、邮件、记事本、Notebook、Notion......甚至是Word也有幸承担过我一段时间内的记录工具（笑...）我每隔一段时间都会重新开始自己的记录，删除过去的存稿或者丢弃放入排序混乱的不知名文件夹中。每隔一段时间也会切换当下的工具去试用下新的记录方式和软件，因为四处漫步的好奇心和转瞬即逝的兴趣热情，目前所留存的仅有很少量的记录。而截至当下，依然持续担任我主力的记录工具分别是用于记录长文的Obsidian和记录短暂想法的Flomo.我体会到了一个经验，“**越简单，越接近直觉，越有持续的可能**。” Obsidian如此，Flomo更是如此。\n\n今年的3月到6月是我的噩梦，也是我人生的低谷。就我目前的身心状态而言，能够继续和现实保持接触，我已经感到非常庆幸。在此之前，我接受过长达一年的精神药物辅助，去应付学习、生活直到第一份工作结束。停药是伴随着痛苦的，无法控制的晕眩，头脑突然短路的空白，随时袭来的恐惧、身体的颤抖，这些体感的症状会逐渐减轻消失，而当初想要依靠药物去对抗的那个自卑怯懦、敏感焦虑的自己的回归，也在不断告诉我：想摆脱痛苦？你做得还不够。\n\n在经历了这场浩劫般的拆并重组后，在7月，我的精神内核，留下的是一个残破的灵魂，在以痛苦为统一背景的`放弃`和`接受`的选择题面前，我选择了后者。于是我有生以来第一次和父母的正式对话，就发生在这般的无奈之下。我的低谷带给我的是对未来的思考，对话带来的则是执行方案的勇气。我给自己立下了非常郑重的短期、中期、长期目标和规划。带着它们，我开始了属于自己的新的生活。\n\n![新的生活](https://raw.githubusercontent.com/eytanchan/eytan-images/master/j3.jpg)\n\n目前可以公开的是：短期目标完成度100% 🏆(适合自己的行业，希望留下的城市，保持社会功能的职业，能够学习到商业贸易模式的直接渠道)\n\n而在当下的时间点，长期主义，已经成为我的原则之一。个人站点是我一直想要部署的一件事情，我不会再去虚无地追问记录的意义，我在学习享受表达这件事情本身。\n\n目前的Blog页面基于Hexo框架搭建，套用了简洁的Next主题🥰，部署采用Github Pages.回忆起来，博客仓库还是在本科时漫长的痛苦时光之外，靠着兴趣和热情一点点摸索教程，冲破阻碍，调试部署的。如今站点重新部署，采用这个“吃灰的旧物件”，以此纪念自己逝去的无知天真、无所顾忌的莽撞肆意。\n\n新的生活与新的纪录也会不断改变这个站点的样貌，博客的框架和前端页面会随着我对感兴趣的知识的学习和实践的深入，产生一些变化，在此挖坑，请多期待🚩🏂\n\n最后，以电影《白日梦想家》的截图来结束此文吧。\n\n![白日梦想家-LIFE杂志的口号](https://raw.githubusercontent.com/eytanchan/eytan-images/master/j1.png)\n\n> “To see the world, things dangerous to come to, to see behind walls, draw closer, to find each other and to feel. That is the purpose of life.”  \n> ― James Thurber, The Secret Life of Walter Mitty"
     }
   }
 ]
