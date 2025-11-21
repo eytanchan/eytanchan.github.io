@@ -16,5 +16,8 @@ View your app in AI Studio: https://ai.studio/apps/drive/1KDoyIyFbnullb2BJfv_rkf
 1. Install dependencies:
    `npm install`
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
+3. Generate blog posts from markdown:
+   `npm run gen:posts`
+   *(Note: You need to run this command whenever you add or modify markdown files in the `resource` directory to update the local preview.)*
+4. Run the app:
    `npm run dev`

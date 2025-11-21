@@ -1,0 +1,32 @@
+[
+  {
+    "id": "helloworld",
+    "date": "2025-11-21",
+    "hasZh": true,
+    "en": {
+      "title": "Hello World-EN",
+      "excerpt": "This is a sample post.",
+      "content": "This is a sample post.\r\n\r\n   \r\n\r\nWelcome to my first blog post! In this entry, I'll be sharing some initial thoughts and getting this space set up. Stay tuned for more!"
+    },
+    "zh": {
+      "title": "Hello World-CH",
+      "excerpt": "This is a sample post.",
+      "content": "This is a sample post.\r\n\r\n   \r\n\r\n欢迎来到我的第一个博客！在这个帖子中，我将分享一些初步的想法，并设置这个空间。敬请期待更多！"
+    }
+  },
+  {
+    "id": "testforlist",
+    "date": "2025-11-21",
+    "hasZh": true,
+    "en": {
+      "title": "Test For list",
+      "excerpt": "Test For list, i mean the posts list.",
+      "content": "Test For list, i mean the posts list.\r\n\r\n   \r\n\r\nWelcome to my first blog post! In this entry, I'll be sharing some initial thoughts and getting this space set up. Stay tuned for more!"
+    },
+    "zh": {
+      "title": "测试列表",
+      "excerpt": "测试列表，就是测试 posts 列表。",
+      "content": "测试列表，就是测试 posts 列表。\r\n\r\n   \r\n\r\nWelcome to my first blog post! In this entry, I'll be sharing some initial thoughts and getting this space set up. Stay tuned for more!"
+    }
+  }
+]

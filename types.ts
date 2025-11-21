@@ -1,11 +1,15 @@
+export interface PostContent {
+  title: string;
+  excerpt: string;
+  content: string;
+}
+
 export interface Post {
   id: string;
-  title: string;
   date: string;
-  excerptEn: string;
-  excerptCn: string;
-  contentEn?: string; // Mock content
-  contentCn?: string; // Mock content
+  hasZh: boolean;
+  en: PostContent;
+  zh: PostContent | null;
 }
 
 export interface Photo {
