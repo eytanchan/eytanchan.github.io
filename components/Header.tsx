@@ -1,14 +1,16 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Globe } from 'lucide-react';
+import { Globe, Moon, Sun } from 'lucide-react';
 import { Language } from '../types';
 
 interface HeaderProps {
   language: Language;
   setLanguage: (lang: Language) => void;
+  darkMode: boolean;
+  setDarkMode: (dark: boolean) => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ language, setLanguage }) => {
+export const Header: React.FC<HeaderProps> = ({ language, setLanguage, darkMode, setDarkMode }) => {
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
@@ -23,48 +25,72 @@ export const Header: React.FC<HeaderProps> = ({ language, setLanguage }) => {
     setLanguage(language === 'en' ? 'cn' : 'en');
   };
 
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+  };
+
+  const fontClass = language === 'en' ? 'font-averia' : 'font-mashan';
+
   return (
-    <header className="w-full max-w-5xl mx-auto pt-8 pb-4 px-6 md:px-0 mb-12">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 md:gap-0">
-        {/* Logo Area */}
-        <Link to="/" className="text-3xl font-bold text-brand-primary tracking-tighter hover:opacity-80 transition-opacity">
-          MY_BLOG
+    <header className={`w-full max-w-5xl mx-auto pt-10 pb-6 px-6 md:px-8 mb-8 ${fontClass}`}>
+      <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
+        
+        {/* Left: Avatar (Rounded Rectangle) */}
+        <Link to="/" className="group relative">
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden shadow-sm border-2 border-transparent group-hover:border-brand-accent transition-all duration-300">
+            <img 
+              src="https://picsum.photos/200/200?grayscale" 
+              alt="Avatar" 
+              className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+            />
+          </div>
         </Link>
 
-        {/* Navigation */}
-        <nav className="flex flex-wrap items-center gap-x-4 text-sm md:text-base">
-          {navItems.map((item, index) => (
-            <React.Fragment key={item.path}>
+        {/* Right: Nav & Controls */}
+        <div className="flex flex-col items-center md:items-end gap-4">
+          
+          {/* Navigation Links */}
+          <nav className="flex items-center gap-x-6 md:gap-x-8 text-lg">
+            {navItems.map((item) => (
               <Link
+                key={item.path}
                 to={item.path}
                 className={`${
-                  isActive(item.path) ? 'text-brand-primary font-bold underline decoration-brand-accent decoration-2 underline-offset-4' : 'text-brand-secondary hover:text-brand-primary'
-                } transition-colors uppercase tracking-wide`}
+                  isActive(item.path) 
+                    ? 'text-brand-primary font-bold' 
+                    : 'text-brand-secondary dark:text-gray-400 hover:text-brand-primary dark:hover:text-brand-accent'
+                } transition-colors tracking-wide`}
               >
                 {language === 'en' ? item.labelEn : item.labelCn}
               </Link>
-              {index < navItems.length - 1 && (
-                <span className="text-brand-accent">|</span>
-              )}
-            </React.Fragment>
-          ))}
+            ))}
+          </nav>
 
-          <span className="text-brand-accent mx-2">|</span>
+          {/* Controls (Lang | Theme) */}
+          <div className="flex items-center gap-4 text-sm text-brand-secondary dark:text-gray-500">
+            
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 hover:text-brand-primary dark:hover:text-brand-accent transition-colors"
+              aria-label="Toggle Language"
+            >
+              <Globe size={18} strokeWidth={1.5} />
+              <span className="uppercase font-bold">{language === 'en' ? 'EN' : '中'}</span>
+            </button>
 
-          {/* Language Toggle */}
-          <button
-            onClick={toggleLanguage}
-            className="flex items-center gap-1 text-brand-secondary hover:text-brand-primary transition-colors"
-            aria-label="Toggle Language"
-          >
-            <Globe size={16} />
-            <span className="uppercase font-bold">{language}</span>
-          </button>
-        </nav>
+            <span className="text-brand-accent/50">|</span>
+
+            <button
+              onClick={toggleTheme}
+              className="flex items-center gap-2 hover:text-brand-primary dark:hover:text-brand-accent transition-colors"
+              aria-label="Toggle Theme"
+            >
+              {darkMode ? <Moon size={18} strokeWidth={1.5} /> : <Sun size={18} strokeWidth={1.5} />}
+            </button>
+          </div>
+
+        </div>
       </div>
-      
-      {/* Decorative Dotted Line */}
-      <div className="w-full border-b-2 border-dotted border-brand-accent mt-6 opacity-60"></div>
     </header>
   );
 };

@@ -1,32 +1,39 @@
-import React, { useState } from 'react';
-import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { PostCard } from './components/PostCard';
 import { MOCK_POSTS, MOCK_PHOTOS } from './constants';
 import { Language } from './types';
-import { Camera, User, ArrowRight } from 'lucide-react';
+import { ArrowRight, Mail, Github, Twitter } from 'lucide-react';
 
-// --- VIEW COMPONENTS DEFINED HERE FOR SIMPLICITY ---
+// --- VIEW COMPONENTS ---
 
 const PostListView: React.FC<{ language: Language }> = ({ language }) => {
+  const fontClass = language === 'en' ? 'font-averia' : 'font-mashan';
+  
   return (
-    <main className="w-full max-w-5xl mx-auto px-6 md:px-0">
-      <h3 className="text-2xl text-brand-primary font-bold mb-8 border-l-4 border-brand-accent pl-4">
-        {language === 'en' ? 'Latest Research' : '最新研究'}
-      </h3>
-      
-      <div className="flex flex-col">
+    <main className={`w-full max-w-5xl mx-auto px-6 md:px-8 animate-fade-in ${fontClass}`}>
+      <div className="flex flex-col border-t border-brand-accent/20 dark:border-brand-accent/10 pt-12">
         {MOCK_POSTS.map((post) => (
           <PostCard key={post.id} post={post} language={language} />
         ))}
       </div>
 
-      <div className="mt-8 mb-20 text-center">
+      <div className="mt-4 mb-24 text-center">
         <button 
-          className="group w-full md:w-auto px-12 py-4 border-2 border-dotted border-brand-primary text-brand-primary font-bold uppercase tracking-widest 
-                     hover:bg-brand-primary hover:text-white hover:border-solid transition-all duration-300 ease-in-out"
+          className="
+            relative overflow-hidden
+            px-10 py-3 rounded-full
+            border border-brand-primary text-brand-primary
+            dark:border-brand-accent dark:text-brand-accent
+            font-bold uppercase tracking-widest text-sm
+            hover:text-white dark:hover:text-gray-900
+            transition-all duration-300 ease-in-out
+            group
+          "
         >
-          {language === 'en' ? 'View all posts' : '查看全部文章'}
+          <span className="relative z-10">{language === 'en' ? 'View all posts' : '查看全部文章'}</span>
+          <div className="absolute inset-0 h-full w-full bg-brand-primary dark:bg-brand-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left z-0"></div>
         </button>
       </div>
     </main>
@@ -34,26 +41,31 @@ const PostListView: React.FC<{ language: Language }> = ({ language }) => {
 };
 
 const GalleryView: React.FC<{ language: Language }> = ({ language }) => {
+  const fontClass = language === 'en' ? 'font-averia' : 'font-mashan';
   return (
-    <main className="w-full max-w-5xl mx-auto px-6 md:px-0 animate-fade-in">
-       <h3 className="text-2xl text-brand-primary font-bold mb-8 border-l-4 border-brand-accent pl-4 flex items-center gap-3">
-        <Camera className="text-brand-secondary" />
-        {language === 'en' ? 'Visual Log' : '视觉日志'}
-      </h3>
+    <main className={`w-full max-w-6xl mx-auto px-6 md:px-8 animate-fade-in ${fontClass}`}>
+       <div className="mb-8">
+          <h3 className="text-xl text-brand-primary font-bold uppercase tracking-widest">
+            {language === 'en' ? 'Gallery' : '画廊'}
+          </h3>
+          <p className="text-brand-secondary dark:text-gray-400 text-sm mt-2">
+            {language === 'en' ? 'A collection of moments captured in time.' : '捕捉时间中的瞬间集合。'}
+          </p>
+       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+      <div className="masonry-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
         {MOCK_PHOTOS.map((photo) => (
-          <div key={photo.id} className="relative group cursor-pointer">
-            <div className="overflow-hidden border-2 border-transparent group-hover:border-brand-accent transition-colors rounded-sm">
+          <div key={photo.id} className="break-inside-avoid mb-6 group cursor-pointer">
+            <div className="overflow-hidden rounded-lg shadow-sm bg-gray-100 dark:bg-gray-800 relative">
                <img 
                 src={photo.url} 
                 alt={photo.caption} 
-                className="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out transform group-hover:scale-105"
+                className="w-full h-auto object-cover grayscale-[0.8] group-hover:grayscale-0 transition-all duration-700 ease-out transform group-hover:scale-105"
               />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
             </div>
-            <div className="mt-2 flex justify-between items-center border-b border-dotted border-brand-secondary/30 pb-1">
-              <span className="text-xs font-bold text-brand-primary uppercase">{photo.caption.split(' / ')[0]}</span>
-              <span className="text-xs text-brand-secondary italic">{photo.caption.split(' / ')[1]}</span>
+            <div className="mt-3 flex justify-between items-end px-1">
+              <span className="text-xs font-bold text-brand-secondary dark:text-gray-300 uppercase tracking-wider">{photo.caption}</span>
             </div>
           </div>
         ))}
@@ -63,69 +75,93 @@ const GalleryView: React.FC<{ language: Language }> = ({ language }) => {
 };
 
 const AboutView: React.FC<{ language: Language }> = ({ language }) => {
+  const fontClass = language === 'en' ? 'font-averia' : 'font-mashan';
   return (
-    <main className="w-full max-w-3xl mx-auto px-6 md:px-0 mb-20">
-       <h3 className="text-2xl text-brand-primary font-bold mb-8 border-l-4 border-brand-accent pl-4 flex items-center gap-3">
-        <User className="text-brand-secondary" />
-        {language === 'en' ? 'About Me' : '关于我'}
-      </h3>
+    <main className={`w-full max-w-3xl mx-auto px-6 md:px-8 mb-24 animate-fade-in ${fontClass}`}>
+      
+      <div className="relative mb-12">
+        <div className="w-24 h-1 bg-brand-accent mb-6"></div>
+        <h1 className="text-4xl md:text-5xl font-bold text-brand-primary mb-4">
+           {language === 'en' ? 'Eytan Chan' : 'Eytan Chan'}
+        </h1>
+        <p className="text-lg text-brand-secondary dark:text-gray-400 italic">
+          {language === 'en' ? 'Researcher / Developer / Photographer' : '研究员 / 开发者 / 摄影师'}
+        </p>
+      </div>
 
-      <div className="prose prose-stone font-mono text-brand-secondary">
-        <p className="mb-6">
+      <div className="prose prose-lg dark:prose-invert text-brand-secondary dark:text-gray-300 leading-loose">
+        <p className="mb-8 first-letter:text-5xl first-letter:font-bold first-letter:text-brand-primary first-letter:mr-3 first-letter:float-left">
           {language === 'en' 
             ? "I am a researcher and developer focused on the intersection of cryptography, finance, and minimalist design. This blog serves as a repository for my thoughts on stablecoin economics and a gallery for my analog photography."
             : "我是一名研究员和开发者，专注于密码学、金融和极简设计的交叉领域。这个博客用来存放我对稳定币经济学的思考，以及我的胶片摄影作品展示。"
           }
         </p>
-        <p className="mb-6">
+        <p className="mb-8">
            {language === 'en'
-             ? "My philosophy is simple: clearer signal, less noise. The aesthetic of this site reflects that principle."
-             : "我的哲学很简单：更清晰的信号，更少的噪音。这个网站的美学反映了这一原则。"
+             ? "My philosophy is simple: clearer signal, less noise. The aesthetic of this site reflects that principle. I believe in building software that feels organic and tools that empower user sovereignty."
+             : "我的哲学很简单：更清晰的信号，更少的噪音。这个网站的美学反映了这一原则。我相信构建感觉有机的软件和赋予用户主权的工具。"
            }
         </p>
         
-        <div className="mt-12 p-6 border border-dotted border-brand-primary bg-gray-50">
-          <h4 className="text-brand-primary font-bold mb-4 uppercase text-sm">
-            {language === 'en' ? 'Contact' : '联系方式'}
+        <div className="mt-16 pt-8 border-t border-dashed border-brand-accent/40">
+          <h4 className="text-brand-primary font-bold mb-6 uppercase text-sm tracking-widest">
+            {language === 'en' ? 'Connect' : '保持联系'}
           </h4>
-          <ul className="space-y-2 text-sm">
-            <li className="flex items-center gap-2">
-              <ArrowRight size={14} className="text-brand-accent" /> 
-              <span>Email: hello@example.com</span>
-            </li>
-            <li className="flex items-center gap-2">
-               <ArrowRight size={14} className="text-brand-accent" /> 
-               <span>Twitter: @example_handle</span>
-            </li>
-             <li className="flex items-center gap-2">
-               <ArrowRight size={14} className="text-brand-accent" /> 
-               <span>Github: @example_dev</span>
-            </li>
-          </ul>
+          <div className="flex flex-wrap gap-6 text-sm">
+            <a href="#" className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-brand-secondary dark:text-gray-300 hover:bg-brand-accent hover:text-brand-primary transition-all">
+              <Mail size={16} />
+              <span>hello@eytanchan.com</span>
+            </a>
+             <a href="#" className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-brand-secondary dark:text-gray-300 hover:bg-brand-accent hover:text-brand-primary transition-all">
+              <Twitter size={16} />
+              <span>@eytan_chan</span>
+            </a>
+             <a href="#" className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-brand-secondary dark:text-gray-300 hover:bg-brand-accent hover:text-brand-primary transition-all">
+              <Github size={16} />
+              <span>github.com/eytan</span>
+            </a>
+          </div>
         </div>
       </div>
     </main>
   );
 };
 
-const Footer: React.FC<{ language: Language }> = ({ language }) => (
-  <footer className="w-full max-w-5xl mx-auto px-6 md:px-0 py-12 border-t border-dotted border-brand-accent/50 text-xs text-brand-secondary/60 flex flex-col md:flex-row justify-between items-center">
-    <div>
-      &copy; 2025 ASXN Research Clone. 
-    </div>
-    <div className="mt-2 md:mt-0">
-       {language === 'en' ? 'Designed with React & Tailwind' : '由 React & Tailwind 驱动'}
-    </div>
-  </footer>
-);
+const Footer: React.FC<{ language: Language }> = ({ language }) => {
+  const fontClass = language === 'en' ? 'font-averia' : 'font-mashan';
+  return (
+    <footer className={`w-full py-12 mt-auto bg-gray-50 dark:bg-[#151515] transition-colors ${fontClass}`}>
+      <div className="max-w-5xl mx-auto px-6 text-center">
+        <div className="text-brand-primary font-bold text-lg mb-2">Eytan Chan</div>
+        <div className="text-xs text-brand-secondary/60 dark:text-gray-600 uppercase tracking-widest">
+          &copy; 2020–2025 Eytan Chan
+        </div>
+      </div>
+    </footer>
+  );
+};
 
 function App() {
   const [language, setLanguage] = useState<Language>('en');
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
 
   return (
     <Router>
-      <div className="min-h-screen bg-white selection:bg-brand-accent selection:text-brand-secondary flex flex-col">
-        <Header language={language} setLanguage={setLanguage} />
+      <div className={`min-h-screen flex flex-col bg-white dark:bg-[#1A1A1A] transition-colors duration-300`}>
+        <Header 
+          language={language} 
+          setLanguage={setLanguage} 
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
+        />
         
         <div className="flex-grow">
           <Routes>

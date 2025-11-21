@@ -3,24 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Personal Blog</title>
+    <title>Eytan Chan | Visual Log</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
+        darkMode: 'class',
         theme: {
           extend: {
             colors: {
               brand: {
-                accent: '#96FCE4', // Mint/Cyan for dots/decorations
+                accent: '#B9DBD0', // Pale Green/Blue for dots/decorations
                 primary: '#50A45D', // Green for Titles
                 secondary: '#5C5C5C', // Grey for text/subtitles
+                darkBg: '#1A1A1A', // Dark mode background
+                darkText: '#E0E0E0', // Dark mode text
               }
             },
             fontFamily: {
-              mono: ['"Space Mono"', 'monospace'],
+              averia: ['"Averia Serif Libre"', 'serif'],
+              mashan: ['"Ma Shan Zheng"', 'cursive'],
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-out',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              }
             }
           }
         }
@@ -28,9 +41,27 @@
     </script>
     <style>
       body {
-        font-family: 'Space Mono', monospace;
         background-color: #ffffff;
         color: #5C5C5C;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      .dark body {
+        background-color: #1A1A1A;
+        color: #E0E0E0;
+      }
+      /* Custom Scrollbar for Tamagui-like feel */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #B9DBD0; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #50A45D; 
       }
     </style>
   <script type="importmap">
