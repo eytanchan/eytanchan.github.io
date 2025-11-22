@@ -6,6 +6,7 @@ Blog Refactor
 
 
 1. Install dependencies:
+   `npm fund`
    `npm install`
 2. Generate blog posts from markdown:
    `npm run gen:posts`

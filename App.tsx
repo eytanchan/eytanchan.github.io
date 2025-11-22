@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { Header } from './components/Header';
 import { PostCard } from './components/PostCard';
