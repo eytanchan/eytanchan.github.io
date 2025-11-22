@@ -226,9 +226,9 @@ const AboutView: React.FC<{ language: Language }> = ({ language }) => {
               <Twitter size={16} />
               <span>@0xetan</span>
             </a>
-            <a href="https://github.com/eytnchn-cyber" className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-brand-secondary dark:text-gray-300 hover:bg-brand-accent hover:text-brand-primary transition-all">
+            <a href="https://github.com/eytnchn" className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-brand-secondary dark:text-gray-300 hover:bg-brand-accent hover:text-brand-primary transition-all">
               <Github size={16} />
-              <span>github.com/eytnchn-cyber</span>
+              <span>github.com/eytnchn</span>
             </a>
           </div>
         </div>
