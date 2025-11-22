@@ -13,6 +13,7 @@ import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { TypewriterText } from './components/TypewriterText';
 
 // --- VIEW COMPONENTS ---
 
@@ -242,7 +243,9 @@ const Footer: React.FC<{ language: Language }> = ({ language }) => {
   return (
     <footer className={`w-full py-12 mt-auto bg-gray-50 dark:bg-[#151515] transition-colors ${fontClass}`}>
       <div className="max-w-5xl mx-auto px-6 text-center">
-        <div className="text-brand-primary font-bold text-md mb-2">Whatever happens, happens.</div>
+        <div className="text-brand-primary font-bold text-md mb-2">
+          <TypewriterText text="Whatever happens, happens." speed={150} />
+        </div>
         <div className="text-xs text-brand-secondary/60 dark:text-gray-600 uppercase tracking-widest">
           &copy; 2020–2025 Eytan Chan
         </div>

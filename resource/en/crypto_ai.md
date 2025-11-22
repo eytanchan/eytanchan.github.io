@@ -3,9 +3,11 @@ date: 2025-11-22
 title: Crypto and AI
 ---  
 
-Blockchain and AI were completely unfamiliar concepts to me just a few years ago. I first encountered Bitcoin in 2014 in my English homework book. At the time, both my teacher and the media told me it was a **Ponzi scheme**, so I forgot about it. I learned about self-driving technology in 2017 and believed it would become a reality within 10 years. I also learned about NLP (specifically Microsoft’s XiaoIce) in 2017, thinking it was useless, until I read OpenAI’s technical post in 2022 on Science Journal.
+Blockchain and AI were completely unfamiliar concepts to me just a few years ago. I first encountered Bitcoin in 2014 in my English homework book. At the time, both my teacher and the media told me it was a **Ponzi scheme**, so I forgot about it. 
 
 <!-- more -->
+
+I learned about self-driving technology in 2017 and believed it would become a reality within 10 years. I also learned about NLP (specifically Microsoft’s XiaoIce) in 2017, thinking it was useless, until I read OpenAI’s technical post in 2022 on Science Journal.
 
 Now, huge changes are happening. I’m writing this to record my thoughts and future plans.
 
