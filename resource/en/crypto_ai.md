@@ -28,9 +28,9 @@ Anyway, here are my **conclusions on crypto:**
 4.   The **intrinsic value** of BTC is zero; like gold, it is just a bunch of **atoms** (or in BTC's case, bits). However, for ETH, there are valuation models to estimate its price because it is a business blockchain. But currently, there is no "value investment" here; everyone just wants to get rich quick, dreaming of turning \$10 into \$10M overnight.
 5.   **Stablecoins** are the biggest innovation in this industry. They are **reinventing banking**. In principle, the future will be shaped by this technology.
 6.   The future of this industry must happen on-chain. Because no one would believe the things that they don't have the ability to verify, it fits **human nature**. If I cannot verify the facts, the best choice is to stay out of the market. That is the principle.
-7.   This gambling game, and perhaps the darker side of the industry, will always exist. Some leave, and some enter, record by blockchains they ever claimed.
+7.   This gambling game, and perhaps the darker side of the industry, will always exist. Some leave, and some enter, recorded by blockchains they ever claimed.
 
-The comes to the thoughts on AI, especially LLMs (Large Language Models), I am trying to build something really exciting these days.
+Then comes to the thoughts on AI, especially LLMs (Large Language Models), I am trying to build something really exciting these days.
 
 My main conclusion is that an LLM is essentially a **lossy compression** of all human knowledge that could be recorded, whatever the format. Human intelligence operates on the same principle. What I mean is, LLMs will become the biggest **leverage** of this era, perhaps in all of human history.
 
