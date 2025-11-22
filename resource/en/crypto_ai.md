@@ -3,7 +3,7 @@ date: 2025-11-22
 title: Crypto and AI
 ---  
 
-Blockchain and AI were completely unfamiliar concepts to me just a few years ago. I first encountered Bitcoin in 2014 in my English homework book. At the time, both my teacher and the media told me it was a **Ponzi scheme**, so I forgot about it. I learned about self-driving technology in 2017 and believed it would become a reality within 10 years. I also learned about NLP (specifically Microsoft’s XiaoIce) in 2017, thinking it was useless，until I read OpenAI’s technical post in 2022 on Science Journal.
+Blockchain and AI were completely unfamiliar concepts to me just a few years ago. I first encountered Bitcoin in 2014 in my English homework book. At the time, both my teacher and the media told me it was a **Ponzi scheme**, so I forgot about it. I learned about self-driving technology in 2017 and believed it would become a reality within 10 years. I also learned about NLP (specifically Microsoft’s XiaoIce) in 2017, thinking it was useless, until I read OpenAI’s technical post in 2022 on Science Journal.
 
 <!-- more -->
 
@@ -32,7 +32,7 @@ Anyway, here are my **conclusions on crypto:**
 
 Then comes to the thoughts on AI, especially LLMs (Large Language Models), I am trying to build something really exciting these days.
 
-My main conclusion is that an LLM is essentially a **lossy compression** of all human knowledge that could be recorded, whatever the format. Human intelligence operates on the same principle. What I mean is, LLMs will become the biggest **leverage** of this era, perhaps in all of human history.
+My main conclusion is that LLM is essentially a **lossy compression** of all human knowledge that could be recorded, whatever the format. Human intelligence operates on the same principle. What I mean is, LLMs will become the biggest **leverage** of this era, perhaps in all of human history.
 
 This year is the "Year of the Agent." **Tool calling** was just invented in the last few months, opening up limitless imagination.
 
