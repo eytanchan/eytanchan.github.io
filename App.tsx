@@ -14,7 +14,6 @@ import rehypeRaw from 'rehype-raw';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { TypewriterText } from './components/TypewriterText';
-import { Helmet } from 'react-helmet-async';
 
 // --- VIEW COMPONENTS ---
 
@@ -29,7 +28,13 @@ const PostListView: React.FC<{ language: Language }> = ({ language }) => {
   const posts = showAll ? allPosts : allPosts.slice(0, 4);
 
   return (
-    <main className={`w-full max-w-5xl mx-auto px-6 md:px-8 animate-fade-in ${fontClass}`}>
+    <>
+      <title>Eytan's Blog</title>
+      <meta name="description" content="A vibe-coder's blog about tech, crypto, AI and life" />
+      <meta property="og:title" content="Eytan's Blog" />
+      <meta property="og:description" content="A vibe-coder's blog about tech, crypto, AI and life" />
+      
+      <main className={`w-full max-w-5xl mx-auto px-6 md:px-8 animate-fade-in ${fontClass}`}>
       <div className="mt-12 mb-8">
         <h2 className="text-3xl md:text-4xl font-bold text-brand-primary dark:text-brand-primary">
           {showAll
@@ -69,7 +74,8 @@ const PostListView: React.FC<{ language: Language }> = ({ language }) => {
       {showAll && (
         <div className="mb-24"></div>
       )}
-    </main>
+      </main>
+    </>
   );
 };
 
@@ -92,19 +98,21 @@ const PostDetailView: React.FC<{ language: Language }> = ({ language }) => {
   }
 
   return (
-    <article className={`w-full max-w-3xl mx-auto px-6 md:px-8 animate-fade-in ${fontClass} mb-24`}>
-      <div className="mb-8 mt-12">
-        <div className="text-sm text-brand-accent mb-2 font-bold tracking-widest">
-          {post.date}
+    <>
+      <title>{content.title} | Eytan's Blog</title>
+      <meta name="description" content={content.excerpt || content.title} />
+      <meta property="og:title" content={content.title} />
+      <meta property="og:description" content={content.excerpt || content.title} />
+      
+      <article className={`w-full max-w-3xl mx-auto px-6 md:px-8 animate-fade-in ${fontClass} mb-24`}>
+        <div className="mb-8 mt-12">
+          <div className="text-sm text-brand-accent mb-2 font-bold tracking-widest">
+            {post.date}
+          </div>
+          <h1 className="text-xl md:text-2xl font-bold text-brand-primary dark:text-brand-primary mb-8 leading-tight">
+            {content.title}
+          </h1>
         </div>
-        <h1 className="text-xl md:text-2xl font-bold text-brand-primary dark:text-brand-primary mb-8 leading-tight">
-          {content.title}
-        </h1>
-        <Helmet>
-          <title>{content.title} | Eytan's Blog</title>
-          <meta name="description" content={content.excerpt || content.title} />
-        </Helmet>
-      </div>
 
       <div className="prose dark:prose-invert text-brand-secondary dark:text-gray-300 leading-loose max-w-none">
         <ReactMarkdown
@@ -152,14 +160,19 @@ const PostDetailView: React.FC<{ language: Language }> = ({ language }) => {
           {content.content}
         </ReactMarkdown>
       </div>
-    </article>
+      </article>
+    </>
   );
 };
 
 const GalleryView: React.FC<{ language: Language }> = ({ language }) => {
   const fontClass = language === 'en' ? 'font-averia' : 'font-mashan';
   return (
-    <main className={`w-full max-w-6xl mx-auto px-6 md:px-8 animate-fade-in ${fontClass}`}>
+    <>
+      <title>Gallery | Eytan's Blog</title>
+      <meta name="description" content="A collection of moments captured in time" />
+      
+      <main className={`w-full max-w-6xl mx-auto px-6 md:px-8 animate-fade-in ${fontClass}`}>
       <div className="mb-8">
         <h3 className="text-xl text-brand-primary font-bold uppercase tracking-widest">
           {language === 'en' ? 'Gallery' : '画廊'}
@@ -186,14 +199,19 @@ const GalleryView: React.FC<{ language: Language }> = ({ language }) => {
           </div>
         ))}
       </div>
-    </main>
+      </main>
+    </>
   );
 };
 
 const AboutView: React.FC<{ language: Language }> = ({ language }) => {
   const fontClass = language === 'en' ? 'font-averia' : 'font-mashan';
   return (
-    <main className={`w-full max-w-3xl mx-auto px-6 md:px-8 mb-24 animate-fade-in ${fontClass}`}>
+    <>
+      <title>About | Eytan's Blog</title>
+      <meta name="description" content="About Eytan Chan - Developer and Photographer" />
+      
+      <main className={`w-full max-w-3xl mx-auto px-6 md:px-8 mb-24 animate-fade-in ${fontClass}`}>
 
       <div className="relative mb-12">
         <div className="w-24 h-1 bg-brand-accent mb-6"></div>
@@ -239,7 +257,8 @@ const AboutView: React.FC<{ language: Language }> = ({ language }) => {
           </div>
         </div>
       </div>
-    </main>
+      </main>
+    </>
   );
 };
 
