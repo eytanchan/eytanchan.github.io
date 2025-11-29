@@ -14,6 +14,7 @@ import rehypeRaw from 'rehype-raw';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { TypewriterText } from './components/TypewriterText';
+import { Helmet } from 'react-helmet-async';
 
 // --- VIEW COMPONENTS ---
 
@@ -99,6 +100,10 @@ const PostDetailView: React.FC<{ language: Language }> = ({ language }) => {
         <h1 className="text-xl md:text-2xl font-bold text-brand-primary dark:text-brand-primary mb-8 leading-tight">
           {content.title}
         </h1>
+        <Helmet>
+          <title>{content.title} | Eytan's Blog</title>
+          <meta name="description" content={content.excerpt || content.title} />
+        </Helmet>
       </div>
 
       <div className="prose dark:prose-invert text-brand-secondary dark:text-gray-300 leading-loose max-w-none">
