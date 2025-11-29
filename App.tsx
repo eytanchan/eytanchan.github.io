@@ -244,7 +244,7 @@ const AboutView: React.FC<{ language: Language }> = ({ language }) => {
             <div className="flex flex-wrap gap-6 text-sm">
               <a href="mailto:hi@etanchan.com" className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-brand-secondary dark:text-gray-300 hover:bg-brand-accent hover:text-brand-primary transition-all">
                 <Mail size={16} />
-                <span>hi@etanchan.com</span>
+                <span>hi[at]etanchan.com</span>
               </a>
               <a href="https://x.com/0xetan" className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-brand-secondary dark:text-gray-300 hover:bg-brand-accent hover:text-brand-primary transition-all">
                 <Twitter size={16} />
