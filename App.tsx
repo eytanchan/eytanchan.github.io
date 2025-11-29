@@ -12,7 +12,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { oneLight, oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { TypewriterText } from './components/TypewriterText';
 
 // --- VIEW COMPONENTS ---
@@ -79,7 +79,7 @@ const PostListView: React.FC<{ language: Language }> = ({ language }) => {
   );
 };
 
-const PostDetailView: React.FC<{ language: Language }> = ({ language }) => {
+const PostDetailView: React.FC<{ language: Language; darkMode: boolean }> = ({ language, darkMode }) => {
   const { id } = useParams();
   const posts = postsData as Post[];
   const post = posts.find(p => p.id === id);
@@ -134,20 +134,33 @@ const PostDetailView: React.FC<{ language: Language }> = ({ language }) => {
               li: ({ node, ...props }) => (
                 <li {...props} className="pl-2 mb-2" />
               ),
+              blockquote: ({ node, ...props }) => (
+                <blockquote
+                  {...props}
+                  className="border-l-4 border-brand-primary pl-4 py-2 my-4 bg-gray-50 dark:bg-gray-800/50 italic text-gray-600 dark:text-gray-400 rounded-r-lg"
+                />
+              ),
               code({ node, inline, className, children, ...props }: any) {
                 const match = /language-(\w+)/.exec(className || '');
                 return !inline && match ? (
-                  <SyntaxHighlighter
-                    {...props}
-                    style={oneLight}
-                    language={match[1]}
-                    PreTag="div"
-                    customStyle={{ background: '#f5f5f5', borderRadius: '0.5rem', padding: '1rem' }}
-                  >
-                    {String(children).replace(/\n$/, '')}
-                  </SyntaxHighlighter>
+                  <div className="rounded-lg overflow-hidden my-6 shadow-sm border border-gray-100 dark:border-gray-700">
+                    <SyntaxHighlighter
+                      {...props}
+                      style={darkMode ? oneDark : oneLight}
+                      language={match[1]}
+                      PreTag="div"
+                      customStyle={{
+                        margin: 0,
+                        padding: '1.5rem',
+                        background: darkMode ? '#282c34' : '#f5f5f5',
+                        fontSize: '0.9em',
+                      }}
+                    >
+                      {String(children).replace(/\n$/, '')}
+                    </SyntaxHighlighter>
+                  </div>
                 ) : (
-                  <code {...props} className={`${className} bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm font-mono text-brand-primary`}>
+                  <code {...props} className={`${className} bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm font-mono text-brand-primary dark:text-brand-accent`}>
                     {children}
                   </code>
                 );
@@ -303,7 +316,7 @@ function App() {
         <div className="flex-grow">
           <Routes>
             <Route path="/" element={<PostListView language={language} />} />
-            <Route path="/post/:id" element={<PostDetailView language={language} />} />
+            <Route path="/post/:id" element={<PostDetailView language={language} darkMode={darkMode} />} />
             <Route path="/gallery" element={<GalleryView language={language} />} />
             <Route path="/about" element={<AboutView language={language} />} />
             <Route path="*" element={<div className={`text-center mt-20 ${language === 'en' ? 'font-averia' : 'font-mashan'} text-brand-secondary dark:text-brand-secondary text-2xl`}>{language === 'en' ? '404 - Page Not Found' : '404 - 页面未找到'}</div>} />
