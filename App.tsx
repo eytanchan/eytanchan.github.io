@@ -306,7 +306,7 @@ function App() {
             <Route path="/post/:id" element={<PostDetailView language={language} />} />
             <Route path="/gallery" element={<GalleryView language={language} />} />
             <Route path="/about" element={<AboutView language={language} />} />
-            <Route path="*" element={<div className="text-center mt-20">404 - Page Not Found</div>} />
+            <Route path="*" element={<div className={`text-center mt-20 ${language === 'en' ? 'font-averia' : 'font-mashan'} text-brand-secondary dark:text-brand-secondary text-2xl`}>{language === 'en' ? '404 - Page Not Found' : '404 - 页面未找到'}</div>} />
           </Routes>
         </div>
 
