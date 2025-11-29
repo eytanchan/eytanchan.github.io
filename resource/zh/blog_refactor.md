@@ -25,7 +25,7 @@ date: 2025-11-29
 - markdown语法渲染支持
 
 截图纪念一下！😎
-![重构版本截图](https://etanchan.com/images/post/blog_refactor/version-1.png)
+![重构版本截图](https://etanchan.com/images/post/blog_refactor/version-dark.png)
 
 改动还会继续，敬请期待！
 
