@@ -282,6 +282,7 @@ function App() {
             <Route path="/post/:id" element={<PostDetailView language={language} />} />
             <Route path="/gallery" element={<GalleryView language={language} />} />
             <Route path="/about" element={<AboutView language={language} />} />
+            <Route path="*" element={<div className="text-center mt-20">404 - Page Not Found</div>} />
           </Routes>
         </div>
 
