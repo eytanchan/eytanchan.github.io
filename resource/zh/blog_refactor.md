@@ -27,6 +27,6 @@ date: 2025-11-29
 截图纪念一下！😎
 ![重构版本截图](https://etanchan.com/images/post/blog_refactor/version-1.png)
 
-
+改动还会继续，敬请期待！
 
 
