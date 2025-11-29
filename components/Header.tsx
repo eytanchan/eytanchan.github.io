@@ -22,7 +22,7 @@ export const Header: React.FC<HeaderProps> = ({ language, setLanguage, darkMode,
   ];
 
   const toggleLanguage = () => {
-    setLanguage(language === 'en' ? 'cn' : 'en');
+    setLanguage(language === 'en' ? 'zh' : 'en');
   };
 
   const toggleTheme = () => {

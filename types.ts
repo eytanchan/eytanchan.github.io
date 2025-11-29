@@ -18,7 +18,7 @@ export interface Photo {
   caption: string;
 }
 
-export type Language = 'en' | 'cn';
+export type Language = 'en' | 'zh';
 
 export interface NavItem {
   labelEn: string;
