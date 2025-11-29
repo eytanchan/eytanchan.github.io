@@ -39,7 +39,7 @@ export const Header: React.FC<HeaderProps> = ({ language, setLanguage, darkMode,
         <Link to="/" className="group relative">
           <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden shadow-sm border-2 border-transparent group-hover:border-brand-accent transition-all duration-300">
             <img
-              src="https://raw.githubusercontent.com/eytanchan/eytan-images/master/avatar.jpg"
+              src="https://etanchan.com/images/avatar.jpg"
               alt="Avatar"
               className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
             />
